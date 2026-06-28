@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
   profileContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
   profileName: { fontSize: 20, fontWeight: "700" },
   profileRole: { fontSize: 13, color: "#888", marginTop: 4 },
-  logoutButton: { backgroundColor: "#dc3545", padding: 14, borderRadius: 8, paddingHorizontal: 32, marginTop: 24 },
+  logoutButton: { backgroundColor: "rgba(7, 51, 229, 0.74)", padding: 14, borderRadius: 8, paddingHorizontal: 32, marginTop: 24 },
   logoutText: { color: "#fff", fontWeight: "600" },
 });

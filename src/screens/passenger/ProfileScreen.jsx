@@ -39,7 +39,7 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.surface },
   header: {
-    backgroundColor: COLORS.secondary,
+    backgroundColor: "rgba(7, 51, 229, 0.74)",
     paddingTop: 70,
     paddingBottom: SPACING.xl,
     alignItems: "center",
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: COLORS.primary,
+    backgroundColor: "rgba(18, 131, 224, 0.55)",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: SPACING.sm,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   infoLabel: { color: COLORS.textMuted, fontSize: 14 },
   infoValue: { color: COLORS.text, fontSize: 14, fontWeight: "600" },
   button: {
-    backgroundColor: COLORS.danger,
+    backgroundColor: "rgba(7, 51, 229, 0.74)",
     borderRadius: RADIUS.button,
     paddingVertical: 16,
     alignItems: "center",

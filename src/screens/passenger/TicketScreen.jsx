@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   successText: { color: COLORS.primaryDark, fontWeight: "700" },
   card: { backgroundColor: COLORS.white, borderRadius: RADIUS.card, overflow: "hidden" },
   headerBar: {
-    backgroundColor: COLORS.text,
+    backgroundColor: "rgba(29, 71, 240, 0.74)",
     padding: SPACING.lg,
     flexDirection: "row",
     justifyContent: "space-between",

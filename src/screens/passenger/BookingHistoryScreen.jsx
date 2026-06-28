@@ -1,6 +1,14 @@
 // src/screens/passenger/BookingHistoryScreen.jsx
 import { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  ActivityIndicator,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import api from "../../services/api";
 import { COLORS, RADIUS, SHADOW, SPACING } from "../../constants/theme";
 
@@ -23,6 +31,31 @@ export default function BookingHistoryScreen() {
     }
   };
 
+  const statusColor = (status) => {
+    if (status === "CONFIRMED") return COLORS.success;
+    if (status === "CANCELLED") return COLORS.danger;
+    if (status === "USED") return COLORS.primary;
+    return COLORS.warning;
+  };
+
+  const handleCancel = async (id) => {
+    Alert.alert("Cancel Booking", "Are you sure you want to cancel this booking?", [
+      { text: "No", style: "cancel" },
+      {
+        text: "Yes, Cancel",
+        style: "destructive",
+        onPress: async () => {
+          try {
+            await api.patch(`/bookings/${id}/cancel`);
+            fetchBookings();
+          } catch (error) {
+            Alert.alert("Error", error.response?.data?.message || "Failed to cancel");
+          }
+        },
+      },
+    ]);
+  };
+
   if (loading) {
     return (
       <View style={styles.center}>
@@ -30,12 +63,6 @@ export default function BookingHistoryScreen() {
       </View>
     );
   }
-
-  const statusColor = (status) => {
-    if (status === "CONFIRMED") return COLORS.success;
-    if (status === "CANCELLED") return COLORS.danger;
-    return COLORS.primary;
-  };
 
   return (
     <View style={styles.container}>
@@ -54,13 +81,31 @@ export default function BookingHistoryScreen() {
               <Text style={styles.route}>
                 {item.schedule.route.fromStation.city} → {item.schedule.route.toStation.city}
               </Text>
-              <View style={[styles.statusBadge, { backgroundColor: `${statusColor(item.status)}1A` }]}>
+              <View
+                style={[
+                  styles.statusBadge,
+                  { backgroundColor: `${statusColor(item.status)}1A` },
+                ]}
+              >
                 <Text style={[styles.statusText, { color: statusColor(item.status) }]}>
                   {item.status}
                 </Text>
               </View>
             </View>
             <Text style={styles.detail}>🚌 {item.schedule.route.agency.name}</Text>
+            <Text style={styles.detail}>
+              🕐 {new Date(item.schedule.departureTime).toLocaleString()}
+            </Text>
+            <Text style={styles.detail}>💰 {item.schedule.price?.toLocaleString()} RWF</Text>
+
+            {item.status === "PENDING" || item.status === "CONFIRMED" ? (
+              <TouchableOpacity
+                style={styles.cancelBtn}
+                onPress={() => handleCancel(item.id)}
+              >
+                <Text style={styles.cancelBtnText}>✕ Cancel Booking</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
         )}
         ListEmptyComponent={
@@ -78,7 +123,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.surface },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
   header: {
-    backgroundColor: COLORS.secondary,
+    backgroundColor: "rgba(7, 51, 229, 0.74)",
     paddingTop: 60,
     paddingBottom: SPACING.lg,
     paddingHorizontal: SPACING.lg,
@@ -98,6 +143,15 @@ const styles = StyleSheet.create({
   statusBadge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: RADIUS.pill },
   statusText: { fontSize: 11, fontWeight: "700" },
   detail: { fontSize: 13, color: COLORS.textMuted, marginTop: SPACING.xs },
+  cancelBtn: {
+    marginTop: SPACING.sm,
+    borderWidth: 1,
+    borderColor: COLORS.danger,
+    borderRadius: RADIUS.button,
+    paddingVertical: 10,
+    alignItems: "center",
+  },
+  cancelBtnText: { color: COLORS.danger, fontWeight: "700", fontSize: 13 },
   emptyState: { alignItems: "center", marginTop: 80 },
   emptyEmoji: { fontSize: 40, marginBottom: 8 },
   empty: { textAlign: "center", color: COLORS.textMuted },

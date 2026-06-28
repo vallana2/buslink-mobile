@@ -178,11 +178,11 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.surface },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
   header: {
-    backgroundColor: COLORS.secondary, paddingTop: 60,
+    backgroundColor: "rgba(7, 51, 229, 0.74)", paddingTop: 60,
     paddingBottom: SPACING.lg, paddingHorizontal: SPACING.lg,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,
   },
-  backText: { color: COLORS.primary, fontSize: 15, fontWeight: "600", marginBottom: SPACING.sm },
+  backText: { color: COLORS.white, fontSize: 15, fontWeight: "600", marginBottom: SPACING.sm },
   title: { fontSize: 22, fontWeight: "900", color: COLORS.white },
   subtitle: { fontSize: 13, color: COLORS.textOnDark, marginTop: 4 },
   addButton: {

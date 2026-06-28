@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
   errorText: { color: COLORS.textMuted, fontSize: 16 },
   header: {
-    backgroundColor: COLORS.secondary,
+    backgroundColor: "rgba(29, 71, 240, 0.74)",
     paddingTop: 60, paddingBottom: SPACING.lg,
     paddingHorizontal: SPACING.lg,
     borderBottomLeftRadius: 24, borderBottomRightRadius: 24,

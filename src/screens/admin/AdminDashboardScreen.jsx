@@ -87,7 +87,7 @@ function StatCard({ label, value, icon, wide }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.surface },
   header: {
-    backgroundColor: COLORS.text,
+    backgroundColor: "rgba(7, 51, 229, 0.74)",
     paddingTop: 60,
     paddingBottom: SPACING.xl,
     paddingHorizontal: SPACING.lg,

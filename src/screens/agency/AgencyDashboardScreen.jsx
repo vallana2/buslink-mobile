@@ -49,6 +49,7 @@ export default function AgencyDashboardScreen({ navigation }) {
     { label: "Manage Buses", subtitle: "Add & view your fleet", icon: "🚌", screen: "ManageBuses" },
     { label: "Manage Routes", subtitle: "Create & view routes", icon: "🗺️", screen: "ManageRoutes" },
     { label: "Manage Schedules", subtitle: "Set departure times", icon: "📅", screen: "ManageSchedules" },
+    { label: "Manage Drivers", subtitle: "Add & view your drivers", icon: "🧑‍✈️", screen: "ManageDrivers" },
   ];
 
   return (
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.surface },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
   header: {
-    backgroundColor: COLORS.secondary,
+    backgroundColor: "rgba(7, 51, 229, 0.74)",
     paddingTop: 70,
     paddingBottom: 56,
     paddingHorizontal: SPACING.lg,
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     marginBottom: SPACING.md,
   },
-  badgeText: { color: COLORS.primary, fontSize: 11, fontWeight: "800", letterSpacing: 0.5 },
+  badgeText: { color: COLORS.white, fontSize: 11, fontWeight: "800", letterSpacing: 0.5 },
   title: { fontSize: 26, fontWeight: "900", color: COLORS.white },
   subtitle: { fontSize: 14, color: COLORS.textOnDark, marginTop: 4 },
   statsGrid: {
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
   actionSubtitle: { fontSize: 12, color: COLORS.textMuted, marginTop: 2 },
   chevron: { fontSize: 24, color: COLORS.textMuted },
   logoutButton: {
-    backgroundColor: COLORS.danger, borderRadius: RADIUS.button,
+    backgroundColor: "rgba(7, 51, 229, 0.74)", borderRadius: RADIUS.button,
     paddingVertical: 16, alignItems: "center",
     marginHorizontal: SPACING.lg, marginTop: SPACING.xl,
   },

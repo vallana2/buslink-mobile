@@ -49,6 +49,12 @@ export const deleteSchedule = async (id) => {
   return res.data;
 };
 
+// Bookings
+export const getAgencyBookings = async () => {
+  const res = await api.get("/bookings/agency/all");
+  return res.data.bookings;
+};
+
 // Reports
 export const getBookingReport = async () => {
   const res = await api.get("/reports/bookings");
